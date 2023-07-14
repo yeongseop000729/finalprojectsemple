@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Board</title>
+</head>
+<body>
+    <h2>Edit Board</h2>
+    <form th:object="${board}" 
+    th:action="@{/board/edit/{boardNo}(boardNo=${board.boardNo})}" method="post">
+        <input type="hidden" th:field="*{boardNo}" />
+        <input type="hidden" th:field="*{member.memberId}" />
+		
+		 <div>
+            <label>Board No:</label>
+            <input type="text" th:field="*{boardNo}" readonly="readonly" />
+        </div>
+		
+        <div>
+            <label>Member ID:</label>
+            <input type="text" th:field="*{member.memberId}" readonly="readonly" />
+        </div>
+        <div> 
+            <label>Title:</label>
+            <input type="text" th:field="*{boardTitle}" />
+        </div>
+
+        <div>
+            <label>Content:</label>
+            <textarea th:field="*{boardContent}"></textarea>
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <a href="/board">돌아가기</a>
+</body>
+</html>

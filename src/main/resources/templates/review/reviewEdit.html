@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Review</title>
+</head>
+<body>
+    <h2>Edit Review</h2>
+    <form th:object="${review}" 
+    th:action="@{/review/edit/{reviewNo}(reviewNo=${review.reviewNo})}" method="post">
+    <input type="hidden" th:field="*{reviewNo}" />
+    <input type="hidden" th:field="*{member.memberId}" />
+	
+	 <div>
+        <label>Review ID:</label>
+        <input type="text" th:field="*{reviewNo}" readonly="readonly" />
+    </div>
+	
+    <div>
+        <label>Member ID:</label>
+        <input type="text" th:field="*{member.memberId}" readonly="readonly" />
+    </div>
+    <div> 
+        <label>Title:</label>
+        <input type="text" th:field="*{reviewTitle}" />
+    </div>
+
+    <div>
+        <label>Content:</label>
+        <textarea th:field="*{reviewContent}"></textarea>
+    </div>
+
+    <button type="submit">Update</button>
+</form>
+
+<a href="/review">Go Back</a>
+
+</body>
+</html>
